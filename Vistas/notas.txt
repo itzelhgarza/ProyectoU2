@@ -1,0 +1,16 @@
+En vistas va puro html
+
+En rutas:
+    - get estudiantes
+    - get estudiantes:id
+    -post estudiantes
+
+en modelos:
+// utilizaremos mongo db (mongoose)
+Tener un esquema, hacer un objeto que siga un estilo fijo
+- id
+- nombre
+- aprobado/reprobado
+
+un app.js es quien acomplará todo lo desacomplado
+es el programa que ejecutaremos, el programa que haremos
