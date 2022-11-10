@@ -23,6 +23,20 @@
             <input type="submit" />
         </form>
 
+        <input id="buscarEstudiante" type="text" placeholder="ID Estudiante" />
+        <script>
+            function buscarEstudiante() {
+                let id = document.getElementById("buscarEstudiante").value;
+                if (id != "") {
+                    window.location.href = "/estudiantes/" + id + "?_method=GET";
+                } else {
+                    window.location.href = "/";
+                }
+            }
+        </script>
+
+        <a type="button" onclick="buscarEstudiante()" class="btn btn-dark"> Buscar </a>
+
         <table class="table">
 
             <head>
@@ -44,8 +58,15 @@
                             <%=listaEstudiantes[i].aprobado %>
                         </td>
                         <td>
-                            <a href="/estudiantes/<%=listaEstudiantes[i].id%>?_method=PUT" class="btn btn-success">Aprobar</a>
-                            <a href="/estudiantes/<%=listaEstudiantes[i].id %>?_method=DELETE" class="btn btn-danger">Eliminar</a>
+                            <% if (listaEstudiantes[i].aprobado==false){ %>
+                                <a href="/estudiantes/<%=listaEstudiantes[i].id%>?_method=PUT"
+                                    class="btn btn-success">Aprobar</a>
+                                <%}else{%>
+                                    <a href="/estudiantes/<%=listaEstudiantes[i].id%>?_method=PUT"
+                                        class="btn btn-warning">Reprobar</a>
+                                    <%}%>
+                                        <a href="/estudiantes/<%=listaEstudiantes[i].id %>?_method=DELETE"
+                                            class="btn btn-danger">Eliminar</a>
                         </td>
                     </tr>
                     <% } %>
@@ -55,10 +76,6 @@
                             crossorigin="anonymous"></script>
             </tbody>
         </table>
-        <form action="/estudiantes" method="GET">
-            <input type="text" name="id" placeholder="Ingresa el ID" /><br>
-            <input type="submit" />
-        </form>
 </body>
 
 </html>
